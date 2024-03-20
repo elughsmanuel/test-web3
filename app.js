@@ -4,6 +4,7 @@ dotenv.config();
 const http = require('http');
 const { ReasonPhrases, StatusCodes } = require('http-status-codes');
 const bodyParser = require('body-parser');
+const walletRouter = require('./wallet/routers/walletRouter');
 
 const app = express();
 const host = process.env.HOST || localhost;
@@ -32,6 +33,8 @@ app.get('/api/v1', (req, res) => {
         data:  `${ReasonPhrases.OK} : API - v1`,
     });
 });
+
+app.use('/api/v1/wallets', walletRouter);
 
 app.get('*', (req, res) => {
     return res.status(StatusCodes.OK).json({
