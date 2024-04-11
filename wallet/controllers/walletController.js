@@ -3,7 +3,7 @@ const { Web3 } = require('web3');
 
 exports.getWalletBalance = async (req, res, next) => {
     try {
-        const { id } = req.query;
+        const { id } = req.query; 
 
         const web3 = new Web3('https://eth.llamarpc.com');
 
